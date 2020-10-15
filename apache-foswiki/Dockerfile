@@ -1,6 +1,9 @@
 # Filename: Dockerfile
 FROM httpd:2.4
 
+WORKDIR /tmp
+RUN apt-get install -y wget 
+
 WORKDIR /var/www
 
 # Download and extract Foswiki
