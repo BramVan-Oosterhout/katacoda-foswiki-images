@@ -3,5 +3,7 @@ FROM httpd:2.4
 
 WORKDIR /var/www
 
-EXPOSE 80
-
+# Download and extract Foswiki
+RUN wget -O Foswiki-2.1.6.tgz https://github.com/foswiki/distro/releases/download/FoswikiRelease02x01x06/Foswiki-2.1.6.tgz
+RUN tar -zxvf Foswiki-2.1.6.tgz 
+RUN mv Foswiki-2.1.6 foswiki
