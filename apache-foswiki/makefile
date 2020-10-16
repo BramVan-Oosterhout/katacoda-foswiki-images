@@ -1,6 +1,12 @@
 # makefile for katacoda docker
 
-## git clone https://github.com/BramVan-Oosterhout/katacoda-foswiki-images
+push:
+	git add *
+	git commit -a -m 'Update'
+	git push origin main
+
+clone:
+	git clone https://github.com/BramVan-Oosterhout/katacoda-foswiki-images
 
 build:
 	docker build -t apache2 .
