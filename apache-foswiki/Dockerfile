@@ -2,10 +2,11 @@
 FROM httpd:2.4
 
 ENV PERL_MM_USE_DEFAULT 1
+ENV PERL_CANARY_STABILITY_NOPROMPT 1
 
 WORKDIR /tmp
 RUN apt-get update
-RUN apt-get install -y wget
+RUN apt-get install -y wget libarray-utils-perl
 
 RUN cpan -T install CGI CGI::Session Crypt::PasswdMD5 Error File::Copy::Recursive JSON
 
