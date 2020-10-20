@@ -30,3 +30,7 @@ RUN chown -R daemon:daemon *
 # Configure the httpd server
 COPY foswiki.conf /usr/local/apache2/conf/extra/.
 RUN sed -i '/# Supplemental configuration/a Include conf/extra/foswiki.conf' /usr/local/apache2/conf/httpd.conf
+RUN sed -ri \
+		-e 's!^(\s*CustomLog)\s+\S+!\1 /var/log/httpd/events.log!g' \
+		-e 's!^(\s*ErrorLog)\s+\S+!\1 /var/log/httpd/error.log!g' \
+		"/usr/local/apache2/conf/httpd.conf" 
