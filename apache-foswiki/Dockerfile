@@ -21,7 +21,7 @@ WORKDIR /var/www/foswiki
 
 #configure Foswiki
 RUN tools/configure -save -noprompt
-RUN tools/configure -save -set {DefaultUrlHost}='http://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com'
+#RUN tools/configure -save -set {DefaultUrlHost}='http://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com'
 RUN tools/configure -save -set {Password}='password'
 RUN tools/configure -save -set {Sessions}{UseIPMatching}='0'
 RUN touch data/.htpasswd
@@ -30,4 +30,5 @@ RUN chown -R daemon:daemon *
 # Configure the httpd server
 COPY foswiki.conf /usr/local/apache2/conf/extra/.
 RUN sed -i '/# Supplemental configuration/a Include conf/extra/foswiki.conf' /usr/local/apache2/conf/httpd.conf
-RUN sed -ri -e 's!^(\s*CustomLog)\s+\S+!\1 /var/log/httpd/events.log!g' -e 's!^(\s*ErrorLog)\s+\S+!\1 /var/log/httpd/error.log!g' "/usr/local/apache2/conf/httpd.conf" 
+RUN /var/log/hh\ttpd
+RUN sed -ri -e 's!^(\s*CustomLog)\s+\S+!\1 /var/log/httpd/access.log!g' -e 's!^(\s*ErrorLog)\s+\S+!\1 /var/log/httpd/error.log!g' "/usr/local/apache2/conf/httpd.conf" 
