@@ -29,6 +29,9 @@ RUN chown -R daemon:daemon *
 
 # Configure the httpd server
 COPY foswiki.conf /usr/local/apache2/conf/extra/.
+COPY KcBvO.crt /usr/local/apache2/conf/server.crt
+COPY KcBvO.key /usr/local/apache2/conf/server.key
+RUN sed -i -e 's/^#\(Include .*httpd-ssl.conf\)/\1/' -e 's/^#\(LoadModule .*mod_ssl.so\)/\1/' -e 's/^#\(LoadModule .*mod_socache_shmcb.so\)/\1/' conf/httpd.conf
 RUN sed -i '/# Supplemental configuration/a Include conf/extra/foswiki.conf' /usr/local/apache2/conf/httpd.conf
 RUN mkdir /var/log/httpd
 RUN sed -ri -e 's!^(\s*CustomLog)\s+\S+!\1 /var/log/httpd/access.log!g' -e 's!^(\s*ErrorLog)\s+\S+!\1 /var/log/httpd/error.log!g' "/usr/local/apache2/conf/httpd.conf" 
