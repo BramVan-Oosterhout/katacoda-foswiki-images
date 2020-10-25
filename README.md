@@ -9,7 +9,7 @@ The images here are:
 | `alpine-apache-foswiki` | An installation of Foswiki with an Apache web server under Alpine |
 
 The `makefile` contains some commands I use often when maintaining these images. I find them useful. They are:
-
+--------------------|---------------------------------
  `push` | push the developed Dockerfile and supporting material to github 
  `clone` | recreate the repository in another environment (Like Katacoda) 
  `certify` | create a user signed `ssl` certificate to support the `https` protocol on the web server 
