@@ -10,14 +10,14 @@ The images here are:
 
 The `makefile` contains some commands I use often when maintaining these images. I find them useful. They are:
 
-| `push` | push the developed Dockerfile and supporting material to github |
-| `clone` | recreate the repository in another environment (Like Katacoda) |
-| `certify` | create a user signed `ssl` certificate to support the `https` protocol on the web server |
-| `build` | build the docker image |
-| `run` | run the docker image. listens on port 80 |ns on port 443 |
-| `run-ssl` | run the docker image. Liste
-| `stop` | stop the docker image |
-| `remove` | remove the docker image |
+ `push` | push the developed Dockerfile and supporting material to github 
+ `clone` | recreate the repository in another environment (Like Katacoda) 
+ `certify` | create a user signed `ssl` certificate to support the `https` protocol on the web server 
+ `build` | build the docker image 
+ `run` | run the docker image. listens on port 80 
+ `run-ssl` | run the docker image. Listens on port 443 
+ `stop` | stop the docker image 
+ `remove` | remove the docker image 
 
 Whilst developing I use 
 1. `make build`
